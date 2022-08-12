@@ -1,0 +1,34 @@
+type Book {
+    id:ID!
+    name:String!
+    author:Author!
+    amount:Float!
+    stock:Int
+}
+
+input BookCreateRequest {
+    name: String!
+    authorId: ID!
+    amount:Float!
+    stock: Int
+}
+
+type Author {
+    id:ID!
+    name:String!
+}
+
+input AuthorCreateRequest {
+    name:String!
+}
+
+type Query {
+    getBooks:[Book]
+    getById(id: ID):Book
+    getAuthors:[Author]
+}
+
+type Mutation {
+    createBook(book: BookCreateRequest):Book
+    createAuthor(author:AuthorCreateRequest):Author
+}
